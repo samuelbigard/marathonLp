@@ -18,7 +18,7 @@ class Article
     private $id;
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
      */
     private $user;
     /**
@@ -56,4 +56,130 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    /**
+     * @return mixed
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user) {
+        $this->user = $user;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getMedia(): Media {
+        return $this->media;
+    }
+
+    /**
+     * @param Media $media
+     */
+    public function setMedia(Media $media) {
+        $this->media = $media;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title) {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary(): string {
+        return $this->summary;
+    }
+
+    /**
+     * @param string $summary
+     */
+    public function setSummary(string $summary) {
+        $this->summary = $summary;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content) {
+        $this->content = $content;
+    }
+
+    /**
+     * @return int
+     */
+    public function getHitcount(): int {
+        return $this->hitcount;
+    }
+
+    /**
+     * @param int $hitcount
+     */
+    public function setHitcount(int $hitcount) {
+        $this->hitcount = $hitcount;
+    }
+
+    /**
+     * @return date
+     */
+    public function getCreatedAt(): date {
+        return $this->created_at;
+    }
+
+    /**
+     * @param date $created_at
+     */
+    public function setCreatedAt(date $created_at) {
+        $this->created_at = $created_at;
+    }
+
+    /**
+     * @return date
+     */
+    public function getUpdatedAt(): date {
+        return $this->updated_at;
+    }
+
+    /**
+     * @param date $updated_at
+     */
+    public function setUpdatedAt(date $updated_at) {
+        $this->updated_at = $updated_at;
+    }
 }

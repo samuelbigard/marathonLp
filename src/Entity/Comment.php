@@ -41,4 +41,88 @@ class Comment
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    /**
+     * @return mixed
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user) {
+        $this->user = $user;
+    }
+
+    /**
+     * @return Recipe
+     */
+    public function getRecipe(): Recipe {
+        return $this->recipe;
+    }
+
+    /**
+     * @param Recipe $recipe
+     */
+    public function setRecipe(Recipe $recipe) {
+        $this->recipe = $recipe;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content) {
+        $this->content = $content;
+    }
+
+    /**
+     * @return date
+     */
+    public function getCreatedAt(): date {
+        return $this->created_at;
+    }
+
+    /**
+     * @param date $created_at
+     */
+    public function setCreatedAt(date $created_at) {
+        $this->created_at = $created_at;
+    }
+
+    /**
+     * @return date
+     */
+    public function getUpdatedAt(): date {
+        return $this->updated_at;
+    }
+
+    /**
+     * @param date $updated_at
+     */
+    public function setUpdatedAt(date $updated_at) {
+        $this->updated_at = $updated_at;
+    }
 }

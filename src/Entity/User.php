@@ -57,7 +57,7 @@ class User implements UserInterface, \Serializable {
 
     /**
      * @var string
-     * @ORM\Column(columnDefinition="TEXT")
+     * @ORM\Column(type="string")
      */
     private $password;
     /**
@@ -264,7 +264,6 @@ class User implements UserInterface, \Serializable {
         if ($this->admin) {
             return array('ROLE_USER','ROLE_ADMIN');
         }
-
         return array('ROLE_USER');
     }
 
