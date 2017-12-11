@@ -23,7 +23,7 @@ class Vote
     private $user;
     /**
      * @var Recipe
-     * @ORM\ManyToOne(targetEntity="App\Entity\Recipe")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Recipe", inversedBy="votes")
      */
     private $recipe;
     /**

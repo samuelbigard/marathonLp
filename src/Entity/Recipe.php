@@ -20,6 +20,7 @@ class Recipe
     /**
      * @var Media
      * @ORM\ManyToOne(targetEntity="App\Entity\Media")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
      */
     private $media;
     /**

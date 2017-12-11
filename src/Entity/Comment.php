@@ -23,7 +23,7 @@ class Comment
     private $user;
     /**
      * @var Recipe
-     * @ORM\ManyToOne(targetEntity="App\Entity\Recipe")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Recipe", inversedBy="comments")
      */
     private $recipe;
     /**

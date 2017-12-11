@@ -8,8 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="articles")
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
-class Article
-{
+class Article {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,6 +23,7 @@ class Article
     /**
      * @var Media
      * @ORM\ManyToOne(targetEntity="App\Entity\Media")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
      */
     private $media;
     /**
@@ -58,6 +58,19 @@ class Article
     private $updated_at;
 
     /**
+     * Article constructor.
+     */
+    public function __construct() {
+        $this->hitcount = 0;
+        $this->title = "";
+        $this->summary = "";
+        $this->content = "";
+//        $this->media = new Media();
+        $this->created_at = new \DateTime('now');
+        $this->updated_at = new \DateTime('now');
+    }
+
+    /**
      * @return mixed
      */
     public function getId() {
@@ -88,7 +101,7 @@ class Article
     /**
      * @return Media
      */
-    public function getMedia(): Media {
+    public function getMedia() {
         return $this->media;
     }
 
@@ -182,4 +195,7 @@ class Article
     public function setUpdatedAt(date $updated_at) {
         $this->updated_at = $updated_at;
     }
+
+
+
 }
