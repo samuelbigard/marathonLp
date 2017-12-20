@@ -8,7 +8,9 @@
     <p>materiels : {{ recipe.materialsMd|raw }}</p>
     <p>astuce : {{ recipe.astuceMd|raw }}</p>
     <p>temps de cuisson : {{ recipe.cookingTime|date("H:i") }} heure(s)</p>
+    {% if recipe.comments is not null %}
     <h2>Commentaires</h2>
+    {% endif %}
     <ul>
     {% for comment in recipe.comments %}
         <li>{{ comment.user.name }} le {{ comment.updatedAt|date("d/m/Y")}}<br> {{ comment.content }}</li>

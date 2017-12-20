@@ -1,24 +1,11 @@
-{% extends "laravel_like.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="flex-center position-ref full-height">
-        {% include 'navbar.html.twig' %}
-
-        <div class="content">
-            <div class="title m-b-md">
-                Yummy
-            </div>
-
-            <div class="links">
-                <a href="http://www.iut-lens.univ-artois.fr">Marathon du Web</a>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="{{ path("recipe_all") }}">Toutes les recettes de a à z</a></li>
-                    <li>Les recettes les plus aimées (5) </li>
-                    <li>Listes des articles (10/page)</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <main class='home'>
+        <div class='home__div1' style='background-image:url({{ asset('build/img/home/visuehome.jpg') }});'>{% include('welcome/templates/recettes-az.html.twig') %}</div>
+        <div class='home__div2' style='background-image:url({{ asset("build/img/home/visurecette.jpg") }});'>{% include('welcome/templates/recettes-like.html.twig') %}</div>
+        <div class='home__div3' style='background-image:url({{ asset("build/img/home/visuarticle.jpg") }});'>{% include('welcome/templates/articles.html.twig') %}</div>
+        <div class='home__div4' style='background-image:url({{ asset("build/img/home/visusecurite.jpg") }});'>{% include('welcome/templates/connexion.html.twig') %}</div>
+        <div class='home__div5'>{% include('welcome/templates/recherche.html.twig') %}</div>
+    </main>
 {% endblock %}

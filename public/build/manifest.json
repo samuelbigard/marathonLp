@@ -1,0 +1,5 @@
+{
+  "build//dist/js/libs.js": "/build//dist/js/libs.js",
+  "build//dist/js/main.js": "/build//dist/js/main.js",
+  "build/style.css": "/build/style.css"
+}

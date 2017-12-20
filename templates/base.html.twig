@@ -2,12 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Marathon du Web lp 3{% endblock %}</title>
+        {% block stylesheets %}<link rel="stylesheet" href="{{ asset("build/style.css") }}">{% endblock %}
     </head>
     <body>
         {% block menu %}{% include "menu.html.twig" %}{% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src='{{ asset("build/dist/js/libs.js") }}'></script>
+            <script src='{{ asset("build/dist/js/main.js") }}'></script>{% endblock %}
     </body>
 </html>

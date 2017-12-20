@@ -133,3 +133,8 @@ Temporary Items
 .web-server-pid
 ###< symfony/web-server-bundle ###
 Supprimerait composer.phar
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+
+###< symfony/webpack-encore-pack ###

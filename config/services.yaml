@@ -4,6 +4,9 @@ parameters:
     locale: 'en'
     media_directory: '%kernel.project_dir%/public/uploads'
 
+framework:
+    assets: ~
+
 services:
     # default configuration for services in *this* file
     _defaults:
