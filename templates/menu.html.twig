@@ -5,12 +5,12 @@
             <li><a href="/">Home</a></li>
             <li><a href="{{ path("recipe_all") }}">Recettes</a></li>
             <li><a href="">Articles</a></li>
-            {% if is_granted('ROLE_USER') %}
-                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
-                <li><a href="/">Mon Compte</a></li>
-            {% elseif is_granted('ROLE_ADMIN') %}
+            {% if is_granted('ROLE_ADMIN') %}
                 <li><a href="{{ path('admin_create_recipe') }}">Creer une recette</a></li>
                 <li><a href="/">Creer un article</a></li>
+            {% elseif is_granted('ROLE_USER') %}
+                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                <li><a href="/">Mon Compte</a></li>
             {% else %}
                 <li><a href="{{ path('login') }}">Connexion</a></li>
                 <li><a href="{{ path("register") }}">Inscription</a></li>
