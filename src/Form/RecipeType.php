@@ -11,6 +11,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -31,6 +32,7 @@ class RecipeType extends AbstractType
             ->add('preparationTime', TimeType::class)
             ->add('cookingTime', TimeType::class)
             ->add('astuce')
+            ->add('media', FileType::class)
             ->add('submit', SubmitType::class,['label' => 'Ajouter la recette'])
         ;
     }

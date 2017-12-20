@@ -2,14 +2,12 @@
 
 {% block body %}
     <h1>{{ recipe.name }}</h1>
-    {% if recipe.media != null %}
-        <p>image : {{ recipe.media.path }}</p>
-    {% endif %}
+    <p><img src="/uploads/{{ recipe.media.path }}"/></p>
     <p>steps : {{ recipe.stepsMd|raw }}</p>
     <p>ingredients : {{ recipe.ingredientsMd|raw }}</p>
     <p>materiels : {{ recipe.materialsMd|raw }}</p>
     <p>astuce : {{ recipe.astuceMd|raw }}</p>
-
+    <p>temps de cuisson : {{ recipe.cookingTime|date("H:i") }} heure(s)</p>
     <h2>Commentaires</h2>
     <ul>
     {% for comment in recipe.comments %}

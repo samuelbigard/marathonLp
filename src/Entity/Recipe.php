@@ -20,7 +20,7 @@ class Recipe
     private $id;
     /**
      * @var Media
-     * @ORM\ManyToOne(targetEntity="App\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"persist"})
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
      */
     private $media;
@@ -140,7 +140,7 @@ class Recipe
     /**
      * @param Media $media
      */
-    public function setMedia(Media $media) {
+    public function setMedia($media) {
         $this->media = $media;
     }
 

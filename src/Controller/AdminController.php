@@ -3,14 +3,14 @@
 namespace App\Controller;
 
 use App\AppEvent;
+use App\Entity\Media;
 use App\Entity\Recipe;
 use App\Event\RecipeEvent;
 use App\Form\RecipeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/admin")
@@ -26,6 +26,18 @@ class AdminController extends Controller
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
+            /** @var UploadedFile $file */
+            $file = $form['media']->getData();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('media_directory'),
+                $fileName
+            );
+            $media = new Media();
+            $media->setPath($fileName);
+            $media->setType($file->getExtension());
+            $media->setTitle($file->getFilename());
+            $recipe->setMedia($media);
             $recipeEvent = $this->get(RecipeEvent::class);
             $recipeEvent->setRecipe($recipe);
             $dispatcher = $this->get('event_dispatcher');
