@@ -29,14 +29,15 @@ class AdminController extends Controller
             /** @var UploadedFile $file */
             $file = $form['media']->getData();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            $file->move(
-                $this->getParameter('media_directory'),
-                $fileName
-            );
             $media = new Media();
             $media->setPath($fileName);
             $media->setType($file->getType());
             $media->setTitle($file->getFilename());
+            $file->move(
+                $this->getParameter('media_directory'),
+                $fileName
+            );
+
             $recipe->setMedia($media);
             $recipeEvent = $this->get(RecipeEvent::class);
             $recipeEvent->setRecipe($recipe);
