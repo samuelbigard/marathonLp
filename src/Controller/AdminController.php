@@ -35,7 +35,7 @@ class AdminController extends Controller
             );
             $media = new Media();
             $media->setPath($fileName);
-            $media->setType($file->getExtension());
+            $media->setType($file->getType());
             $media->setTitle($file->getFilename());
             $recipe->setMedia($media);
             $recipeEvent = $this->get(RecipeEvent::class);
