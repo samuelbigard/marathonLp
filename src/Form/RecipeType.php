@@ -11,6 +11,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -25,10 +26,19 @@ class RecipeType extends AbstractType
         $builder
             ->add('name')
             ->add('description', TextareaType::class)
-            ->add('steps')
-            ->add('ingredients')
-            ->add('difficulty')
-            ->add('materials')
+            ->add('steps', TextareaType::class)
+            ->add('ingredients', TextareaType::class)
+            ->add('difficulty', ChoiceType::class, [
+                "choices" =>
+                    ["0" => 0,
+                    "1" => 1,
+                    "2" => 2,
+                    "3" => 3,
+                    "4" => 4,
+                    "5" => 5]
+            ,
+                "multiple" => false, "expanded" => false])
+            ->add('materials', TextareaType::class)
             ->add('preparationTime', TimeType::class)
             ->add('cookingTime', TimeType::class)
             ->add('astuce')
