@@ -18,4 +18,4 @@ framework:
 #        toolbar: %kernel.debug%
 #        intercept_redirects:  false
 #        excluded_ajax_paths:  ^/bundles|^/_wdt
-
+#        excluded_ajax_paths:  ^/bundles|^/_wdt
