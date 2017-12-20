@@ -24,11 +24,27 @@ class RecipeSubscriber implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(AppEvent::RECIPE_ADD => 'add');
+        return array(
+            AppEvent::RECIPE_ADD => 'add',
+            AppEvent::RECIPE_EDIT => 'edit',
+            AppEvent::RECIPE_DEL => 'delete',);
     }
 
-    public function add(RecipeEvent $recipeEvent){
+    public function add(RecipeEvent $recipeEvent)
+    {
         $this->em->persist($recipeEvent->getRecipe());
+        $this->em->flush();
+    }
+
+    public function edit(RecipeEvent $recipeEvent)
+    {
+        $this->em->persist($recipeEvent->getRecipe());
+        $this->em->flush();
+    }
+
+    public function delete(RecipeEvent $recipeEvent)
+    {
+        $this->em->remove($recipeEvent->getRecipe());
         $this->em->flush();
     }
 }

@@ -12,4 +12,7 @@ namespace App;
 class AppEvent
 {
     const RECIPE_ADD = 'app.recipe.add';
+    const RECIPE_EDIT = 'app.recipe.edit';
+    const RECIPE_DEL = 'app.recipe.delete';
+
 }
