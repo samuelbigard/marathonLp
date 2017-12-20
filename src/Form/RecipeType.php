@@ -26,8 +26,8 @@ class RecipeType extends AbstractType
         $builder
             ->add('name')
             ->add('description', TextareaType::class)
-            ->add('steps', TextareaType::class)
-            ->add('ingredients', TextareaType::class)
+            ->add('steps', TextareaType::class, ["attr"=>["class"=>"markdown"]])
+            ->add('ingredients', TextareaType::class, ["attr"=>["class"=>"markdown"] ])
             ->add('difficulty', ChoiceType::class, [
                 "choices" =>
                     ["0" => 0,
@@ -38,7 +38,7 @@ class RecipeType extends AbstractType
                     "5" => 5]
             ,
                 "multiple" => false, "expanded" => false])
-            ->add('materials', TextareaType::class)
+            ->add('materials', TextareaType::class, ["attr"=>["class"=>"markdown"]])
             ->add('preparationTime', TimeType::class)
             ->add('cookingTime', TimeType::class)
             ->add('astuce')
