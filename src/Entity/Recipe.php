@@ -106,6 +106,10 @@ class Recipe
         return Markdown::defaultTransform($this->getAstuce());
     }
 
+    public function getWebPath(){
+        return "/uploads/".$this->getMedia()->getPath();
+    }
+
 
     /**
      * Recipe constructor.

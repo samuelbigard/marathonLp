@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>{{ recipe.name }}</h1>
-    <p><img src="/uploads/{{ recipe.media.path }}"/></p>
+    <p><img src="{{ asset(recipe.webPath) }}"/></p>
     <p>steps : {{ recipe.stepsMd|raw }}</p>
     <p>ingredients : {{ recipe.ingredientsMd|raw }}</p>
     <p>materiels : {{ recipe.materialsMd|raw }}</p>
