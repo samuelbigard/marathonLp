@@ -15,9 +15,6 @@ class WelcomeController extends AbstractController
      */
     public function index()
     {
-        $em = $this->getDoctrine()->getManager();
-        $recettes = $em->getRepository(Recipe::class)->findAll();
-        $articles = $em->createQuery("select a from \App\Entity\Article a join a.user")->getResult();
-        return $this->render('welcome/welcome.html.twig',['recettes'=>$recettes,'articles'=>$articles]);
+        return $this->render('welcome/welcome.html.twig');
     }
 }

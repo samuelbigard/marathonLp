@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <ul>
+        {% for recipe in recipes %}
+            <li><a href="{{ path("recipe_view", {id:recipe.id}) }}">{{ recipe.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

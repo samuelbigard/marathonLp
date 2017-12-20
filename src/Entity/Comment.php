@@ -101,7 +101,7 @@ class Comment
     /**
      * @return date
      */
-    public function getCreatedAt(): date {
+    public function getCreatedAt() {
         return $this->created_at;
     }
 
@@ -115,7 +115,7 @@ class Comment
     /**
      * @return date
      */
-    public function getUpdatedAt(): date {
+    public function getUpdatedAt() {
         return $this->updated_at;
     }
 

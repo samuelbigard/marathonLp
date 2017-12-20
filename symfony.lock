@@ -59,6 +59,9 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "michelf/php-markdown": {
+        "version": "1.7.0"
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },

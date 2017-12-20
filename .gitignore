@@ -4,6 +4,7 @@
 /public/bundles/
 /var/
 /vendor/
+/composer.phar
 ###< symfony/framework-bundle ###
 ### Symfony template
 # Cache and logs (Symfony2)
@@ -131,3 +132,4 @@ Temporary Items
 ###> symfony/web-server-bundle ###
 .web-server-pid
 ###< symfony/web-server-bundle ###
+Supprimerait composer.phar

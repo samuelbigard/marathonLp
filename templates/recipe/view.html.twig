@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>{{ recipe.name }}</h1>
+    {% if recipe.media != null %}
+        <p>image : {{ recipe.media.path }}</p>
+    {% endif %}
+    <p>steps : {{ recipe.stepsMd|raw }}</p>
+    <p>ingredients : {{ recipe.ingredientsMd|raw }}</p>
+    <p>materiels : {{ recipe.materialsMd|raw }}</p>
+    <p>astuce : {{ recipe.astuceMd|raw }}</p>
+
+    <h2>Commentaires</h2>
+    <ul>
+    {% for comment in recipe.comments %}
+        <li>{{ comment.user.name }} le {{ comment.updatedAt|date("d/m/Y")}}<br> {{ comment.content }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

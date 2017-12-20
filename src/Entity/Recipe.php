@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Michelf\Markdown;
 
 /**
  * @ORM\Table(name="recipes")
@@ -23,6 +24,12 @@ class Recipe
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
      */
     private $media;
+
+    /**
+     * @ORM\Column()
+     */
+    private $description;
+
     /**
      * @var string
      * @ORM\Column(type="string", length=120)
@@ -56,12 +63,11 @@ class Recipe
      */
     private $difficulty;
     /**
-     * @var time
+
      * @ORM\Column(type="time")
      */
     private $preparation_time;
     /**
-     * @var time
      * @ORM\Column(type="time")
      */
     private $cooking_time;
@@ -76,15 +82,30 @@ class Recipe
      */
     private $astuce;
     /**
-     * @var date
      * @ORM\Column(type="datetime")
      */
     private $created_at;
     /**
-     * @var date
      * @ORM\Column(type="datetime")
      */
     private $updated_at;
+
+    public function stepsMd(){
+        return Markdown::defaultTransform($this->getSteps());
+    }
+
+    public function ingredientsMd(){
+        return Markdown::defaultTransform($this->getIngredients());
+    }
+
+    public function materialsMd(){
+        return Markdown::defaultTransform($this->getMaterials());
+    }
+
+    public function astuceMd(){
+        return Markdown::defaultTransform($this->getAstuce());
+    }
+
 
     /**
      * Recipe constructor.
@@ -92,6 +113,7 @@ class Recipe
     public function __construct() {
         $this->comments = new ArrayCollection();
         $this->votes = new ArrayCollection();
+        $this->created_at = $this->updated_at =  new \DateTime();
     }
 
     /**
@@ -111,7 +133,7 @@ class Recipe
     /**
      * @return Media
      */
-    public function getMedia(): Media {
+    public function getMedia() {
         return $this->media;
     }
 
@@ -123,9 +145,25 @@ class Recipe
     }
 
     /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
      * @return string
      */
-    public function getName(): string {
+    public function getName() {
         return $this->name;
     }
 
@@ -139,7 +177,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getSteps(): string {
+    public function getSteps() {
         return $this->steps;
     }
 
@@ -153,7 +191,7 @@ class Recipe
     /**
      * @return Comment[]
      */
-    public function getComments(): ArrayCollection {
+    public function getComments() {
         return $this->comments;
     }
 
@@ -167,7 +205,7 @@ class Recipe
     /**
      * @return Vote[]
      */
-    public function getVotes(): ArrayCollection {
+    public function getVotes() {
         return $this->votes;
     }
 
@@ -181,7 +219,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getIngredients(): string {
+    public function getIngredients() {
         return $this->ingredients;
     }
 
@@ -195,7 +233,7 @@ class Recipe
     /**
      * @return int
      */
-    public function getDifficulty(): int {
+    public function getDifficulty() {
         return $this->difficulty;
     }
 
@@ -209,35 +247,35 @@ class Recipe
     /**
      * @return time
      */
-    public function getPreparationTime(): time {
+    public function getPreparationTime() {
         return $this->preparation_time;
     }
 
     /**
      * @param time $preparation_time
      */
-    public function setPreparationTime(time $preparation_time) {
+    public function setPreparationTime($preparation_time) {
         $this->preparation_time = $preparation_time;
     }
 
     /**
      * @return time
      */
-    public function getCookingTime(): time {
+    public function getCookingTime() {
         return $this->cooking_time;
     }
 
     /**
      * @param time $cooking_time
      */
-    public function setCookingTime(time $cooking_time) {
+    public function setCookingTime($cooking_time) {
         $this->cooking_time = $cooking_time;
     }
 
     /**
      * @return string
      */
-    public function getMaterials(): string {
+    public function getMaterials() {
         return $this->materials;
     }
 
@@ -251,7 +289,7 @@ class Recipe
     /**
      * @return string
      */
-    public function getAstuce(): string {
+    public function getAstuce() {
         return $this->astuce;
     }
 
@@ -262,31 +300,25 @@ class Recipe
         $this->astuce = $astuce;
     }
 
-    /**
-     * @return date
-     */
-    public function getCreatedAt(): date {
+    public function getCreatedAt()  {
         return $this->created_at;
     }
 
-    /**
-     * @param date $created_at
-     */
-    public function setCreatedAt(date $created_at) {
+    public function setCreatedAt( $created_at) {
         $this->created_at = $created_at;
     }
 
     /**
      * @return date
      */
-    public function getUpdatedAt(): date {
+    public function getUpdatedAt()  {
         return $this->updated_at;
     }
 
     /**
      * @param date $updated_at
      */
-    public function setUpdatedAt(date $updated_at) {
+    public function setUpdatedAt($updated_at) {
         $this->updated_at = $updated_at;
     }
 
