@@ -7,7 +7,7 @@
             <li><a href="">Articles</a></li>
             <li><a href="">Connexion</a></li>
             {% if is_granted('ROLE_USER') %}
-                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
+                <li><a href="{{ path('logout') }}">Déconnexion jfmfjmqjfm</a></li>
                 <li><a href="/">Mon Compte</a></li>
             {% elseif is_granted('ROLE_ADMIN') %}
                 <li><a href="{{ path('admin_create_recipe') }}">Creer une recette</a></li>
