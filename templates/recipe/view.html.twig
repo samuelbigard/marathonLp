@@ -3,7 +3,7 @@
 {% block body %}
     <h1>{{ recipe.name }}</h1>
     {% if recipe.media is not null  %}
-        <p><img src="{{ absolute_url(asset(recipe.webPath)) }}"/></p>
+        <p><img src="{{ asset(prefix~recipe.webPath) }}"/></p>
     {% endif %}
     <p>steps : {{ recipe.stepsMd|raw }}</p>
     <p>ingredients : {{ recipe.ingredientsMd|raw }}</p>
