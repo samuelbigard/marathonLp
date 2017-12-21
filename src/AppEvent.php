@@ -18,4 +18,8 @@ class AppEvent
     const ARTICLE_ADD = 'app.article.add';
     const ARTICLE_EDIT = 'app.article.edit';
     const ARTICLE_DEL = 'app.article.delete';
+
+    const COMMENT_ADD = 'app.comment.add';
+    const COMMENT_EDIT = 'app.comment.edit';
+    const COMMENT_DEL = 'app.comment.delete';
 }

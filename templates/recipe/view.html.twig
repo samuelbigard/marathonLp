@@ -17,4 +17,13 @@
             <li>{{ comment.user.name }} le {{ comment.updatedAt|date("d/m/Y")}}<br> {{ comment.content }}</li>
         {% endfor %}
     </ul>
+    {% if is_granted('ROLE_USER') %}
+        <div class="form-sf">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    {% else %}
+        <span><a href="{{ path("login") }}"> Connectez-vous</a> pour pouvoir commenter</span>
+    {% endif %}
 {% endblock %}

@@ -43,6 +43,15 @@ class Comment
     private $updated_at;
 
     /**
+     * Comment constructor.
+     */
+    public function __construct()
+    {
+        $this->created_at = $this->updated_at = new \DateTime();
+    }
+
+
+    /**
      * @return mixed
      */
     public function getId() {
@@ -59,42 +68,42 @@ class Comment
     /**
      * @return User
      */
-    public function getUser(): User {
+    public function getUser(){
         return $this->user;
     }
 
     /**
      * @param User $user
      */
-    public function setUser(User $user) {
+    public function setUser($user) {
         $this->user = $user;
     }
 
     /**
      * @return Recipe
      */
-    public function getRecipe(): Recipe {
+    public function getRecipe() {
         return $this->recipe;
     }
 
     /**
      * @param Recipe $recipe
      */
-    public function setRecipe(Recipe $recipe) {
+    public function setRecipe($recipe) {
         $this->recipe = $recipe;
     }
 
     /**
      * @return string
      */
-    public function getContent(): string {
+    public function getContent() {
         return $this->content;
     }
 
     /**
      * @param string $content
      */
-    public function setContent(string $content) {
+    public function setContent($content) {
         $this->content = $content;
     }
 
@@ -108,7 +117,7 @@ class Comment
     /**
      * @param date $created_at
      */
-    public function setCreatedAt(date $created_at) {
+    public function setCreatedAt($created_at) {
         $this->created_at = $created_at;
     }
 
@@ -122,7 +131,7 @@ class Comment
     /**
      * @param date $updated_at
      */
-    public function setUpdatedAt(date $updated_at) {
+    public function setUpdatedAt($updated_at) {
         $this->updated_at = $updated_at;
     }
 }

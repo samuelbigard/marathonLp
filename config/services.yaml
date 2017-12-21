@@ -33,3 +33,6 @@ services:
 
     App\Event\ArticleEvent:
         public: true
+
+    App\Event\CommentEvent:
+        public: true
