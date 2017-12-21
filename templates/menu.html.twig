@@ -4,10 +4,10 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="{{ path("recipe_all") }}">Recettes</a></li>
-            <li><a href="">Articles</a></li>
+            <li><a href="{{ path("article_all") }}">Articles</a></li>
             {% if is_granted('ROLE_ADMIN') %}
                 <li><a href="{{ path('admin_create_recipe') }}">Creer une recette</a></li>
-                <li><a href="/">Creer un article</a></li>
+                <li><a href="{{ path('admin_create_article') }}">Creer un article</a></li>
                 <li><a href="{{ path('logout') }}">Déconnexion</a></li>
             {% elseif is_granted('ROLE_USER') %}
                 <li><a href="/">Mon Compte</a></li>

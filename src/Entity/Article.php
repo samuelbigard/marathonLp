@@ -22,7 +22,7 @@ class Article {
     private $user;
     /**
      * @var Media
-     * @ORM\ManyToOne(targetEntity="App\Entity\Media")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media",cascade={"persist"})
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", nullable=true)
      */
     private $media;
@@ -65,10 +65,13 @@ class Article {
         $this->title = "";
         $this->summary = "";
         $this->content = "";
-//        $this->media = new Media();
-        $this->created_at = new \DateTime('now');
-        $this->updated_at = new \DateTime('now');
+        $this->created_at = $this->updated_at = new \DateTime();
     }
+
+    public function getWebPath(){
+        return "/uploads/".$this->getMedia()->getPath();
+    }
+
 
     /**
      * @return mixed

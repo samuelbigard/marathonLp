@@ -30,3 +30,6 @@ services:
 
     App\Event\RecipeEvent:
         public: true
+
+    App\Event\ArticleEvent:
+        public: true

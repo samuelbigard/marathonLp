@@ -15,4 +15,7 @@ class AppEvent
     const RECIPE_EDIT = 'app.recipe.edit';
     const RECIPE_DEL = 'app.recipe.delete';
 
+    const ARTICLE_ADD = 'app.article.add';
+    const ARTICLE_EDIT = 'app.article.edit';
+    const ARTICLE_DEL = 'app.article.delete';
 }
