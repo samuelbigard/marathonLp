@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -15,10 +16,16 @@ class ArticleController extends Controller
     /**
      * @Route(path="/all", name="article_all")
      */
-    public function allArticles(){
+    public function allArticles(Request $request){
+        $paginator  = $this->get('knp_paginator');
         $em = $this->getDoctrine()->getManager();
         $articles = $em->getRepository(Article::class)->findAll();
-        return $this->render("article/all.html.twig", ["articles" => $articles]);
+        $articles_page = $paginator->paginate(
+            $articles, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            2/*limit per page*/
+        );
+        return $this->render("article/all.html.twig", ["articles" => $articles_page]);
     }
 
     /**
