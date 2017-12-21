@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <main class="liste">
+        <div class="liste__div1">
+            <div class="centerContent">
+                <h1>Liste de nos recettes</h1>
+                {% set cpt = 1 %}
+                {% for recipe in recipes %}
+                    {% if cpt%2 == 1 %}
+                        <a href="{{ path("recipe_view",{id: recipe.id}) }}" class="card left" style="background-image: url({{ asset(prefix~recipe.webPath) }})">
+                            <div class="centerCardContent">
+                                <p class="NumberRecette">0{{ cpt }}</p>
+                                <h2>{{ recipe.name }}</h2>
+                                <p class="texteStyle">
+                                    {{ recipe.description }}
+                                </p>
+                                <p class="letterBack">0{{ cpt }}</p>
+                            </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <button onclick="window.location.href="{{ path('admin_delete_recipe', {id:recipe.id}) }}"">Supprimer</button>
+                            <button onclick="window.location.href="{{ path('admin_edit_recipe', {id:recipe.id}) }}"">Editer</button>
+                        {% endif %}
+                        </a>
+                    {% else %}
+                        <a href="{{ path("recipe_view",{id: recipe.id}) }}" class="card right" style="background-image: url({{ asset(prefix~recipe.webPath) }})">
+                            <div class="centerCardContent">
+                                <p class="NumberRecette">0{{ cpt }}</p>
+                                <h2>{{ recipe.name }}</h2>
+                                <p class="texteStyle">
+                                    {{ recipe.description }}
+                                </p>
+                                <p class="letterBack">0{{ cpt }}</p>
+                            </div>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <button onclick="window.location.href="{{ path('admin_delete_recipe', {id:recipe.id}) }}"">Supprimer</button>
+                            <button onclick="window.location.href="{{ path('admin_edit_recipe', {id:recipe.id}) }}">editer</button>
+                        {% endif %}
+                        </a>
+                    {% endif %}
+                    {% set cpt = cpt + 1 %}
+
+{% endfor %}
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

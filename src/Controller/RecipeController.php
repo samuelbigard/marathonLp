@@ -39,7 +39,7 @@ class RecipeController extends Controller
     public function expressRecipe(){
         $em = $this->getDoctrine()->getManager();
         $recipes = $em->getRepository(Recipe::class)->findFiveFastest();
-        return $this->render("recipe/all.html.twig", ["recipes" => $recipes]);
+        return $this->render("recipe/express.html.twig", ["recipes" => $recipes]);
     }
 
     /**
