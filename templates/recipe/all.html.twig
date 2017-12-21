@@ -1,15 +1,52 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <ul>
-        {% for recipe in recipes %}
-            <li>
-                <a href="{{ path("recipe_view", {id:recipe.id}) }}">{{ recipe.name }}</a>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class= "btn btn-info" href="{{ path('admin_edit_recipe', {id:recipe.id}) }}">Editer</a>
-                <a class= "btn btn-alert" href="{{ path('admin_delete_recipe', {id:recipe.id}) }}">Supprimer</a>
-            {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+
+    <main class="liste-AZ">
+        <div class="liste-AZ__div1">
+            <span id='alpha0' class='active'>#</span>
+            <span id='alphaA'>A</span>
+            <span id='alphaB'>B</span>
+            <span id='alphaC'>C</span>
+            <span id='alphaD'>D</span>
+            <span id='alphaE'>E</span>
+            <span id='alphaF'>F</span>
+            <span id='alphaG'>G</span>
+            <span id='alphaH'>H</span>
+            <span id='alphaI'>I</span>
+            <span id='alphaJ'>J</span>
+            <span id='alphaK'>K</span>
+            <span id='alphaL'>L</span>
+            <span id='alphaM'>M</span>
+            <span id='alphaN'>N</span>
+            <span id='alphaO'>O</span>
+            <span id='alphaP'>P</span>
+            <span id='alphaQ'>Q</span>
+            <span id='alphaR'>R</span>
+            <span id='alphaS'>S</span>
+            <span id='alphaT'>T</span>
+            <span id='alphaU'>U</span>
+            <span id='alphaV'>V</span>
+            <span id='alphaW'>W</span>
+            <span id='alphaX'>X</span>
+            <span id='alphaY'>Y</span>
+            <span id='alphaZ'>Z</span>
+        </div>
+        <div class="liste-AZ__div2">
+            <ul>
+                {% for recipe in recipes %}
+                    <li>
+                        <a href="{{ path("recipe_view", {id:recipe.id}) }}">{{ recipe.name }}</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('admin_edit_recipe', {id:recipe.id}) }}">Editer</a>
+                        <a href="{{ path('admin_delete_recipe', {id:recipe.id}) }}">Supprimer</a>
+                    {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
 {% endblock %}
+
+
+
