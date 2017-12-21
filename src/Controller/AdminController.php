@@ -131,7 +131,7 @@ class AdminController extends Controller
             $dispatcher = $this->get('event_dispatcher');
             $dispatcher->dispatch(AppEvent::ARTICLE_ADD, $articleEvent);
             //return $this->redirectToRoute("article_view", ["id" => $article->getId()]);
-            return $this->redirectToRoute("article_all");
+            return $this->redirectToRoute("article_view", ["id"=>$article->getId()]);
         }
         return $this->render("article/new.html.twig", array("form"=>$form->createView()));
     }
