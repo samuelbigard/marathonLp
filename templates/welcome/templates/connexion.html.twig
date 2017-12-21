@@ -1,1 +1,7 @@
+
+
+{% if not is_granted("ROLE_USER") %}
 <a href="{{ path("login") }}"><h2><span>l'espace</span>Membres</h2><img src="{{ asset("build/img/home/lock.svg") }}" alt=""></a>
+    {% else %}
+        <a href="{{ path("user_account") }}"><h2><span>l'espace</span>Membres</h2><img src="{{ asset("build/img/home/lock.svg") }}" alt=""></a>
+{% endif %}

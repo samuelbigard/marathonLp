@@ -25,6 +25,10 @@ class ArticleController extends Controller
      * @Route(path="/{id}", name="article_view")
      */
     public function viewArticle(Article $article){
+        $article->setHitcount($article->getHitcount()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($article);
+        $em->flush();
         return $this->render("article/view.html.twig", ["article" => $article]);
     }
 }

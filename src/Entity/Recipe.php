@@ -63,7 +63,7 @@ class Recipe
      */
     private $difficulty;
     /**
-
+"votes.user"=>$this->getUser()
      * @ORM\Column(type="time")
      */
     private $preparation_time;

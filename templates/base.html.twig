@@ -4,6 +4,62 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Marathon du Web lp 3{% endblock %}</title>
+        <style>
+            @font-face {
+                font-family: 'Vidaloka';
+                src: url({{ asset("build/fonts/Vidaloka-Regular.ttf") }});
+                src: url({{ asset("build/fonts/Vidaloka-Regular.ttf") }}) format('truetype'),
+                url({{ asset("build/fonts/Vidaloka-Regular.ttf") }}) format('woff'),
+                url({{ asset("build/fonts/Vidaloka-Regular.ttf") }}) format('embedded-opentype'),
+                url({{ asset("build/fonts/Vidaloka-Regular.ttf") }}) format('svg');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                src: url({{ asset("build/fonts/OpenSans-Light.ttf") }});
+                src: url({{ asset("build/fonts/OpenSans-Light.ttf") }}) format('truetype'),
+                url({{ asset("build/fonts/OpenSans-Light.ttf") }}) format('woff'),
+                url({{ asset("build/fonts/OpenSans-Light.ttf") }}) format('embedded-opentype'),
+                url({{ asset("build/fonts/OpenSans-Light.ttf") }}) format('svg');
+                font-weight: 300;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                src: url({{ asset("build/fonts/OpenSans-Regulart.ttf") }});
+                src: url({{ asset("build/fonts/OpenSans-Regulart.ttf") }}) format('truetype'),
+                url({{ asset("build/fonts/OpenSans-Regulart.ttf") }}) format('woff'),
+                url({{ asset("build/fonts/OpenSans-Regulart.ttf") }}) format('embedded-opentype'),
+                url({{ asset("build/fonts/OpenSans-Regulart.ttf") }}) format('svg');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                src: url({{ asset("build/fonts/OpenSans-SemiBold.ttf") }});
+                src: url({{ asset("build/fonts/OpenSans-SemiBold.ttf") }}) format('truetype'),
+                url({{ asset("build/fonts/OpenSans-SemiBold.ttf") }}) format('woff'),
+                url({{ asset("build/fonts/OpenSans-SemiBold.ttf") }}) format('embedded-opentype'),
+                url({{ asset("build/fonts/OpenSans-SemiBold.ttf") }}) format('svg');
+                font-weight: 500;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Open Sans';
+                src: url({{ asset("build/fonts/OpenSans-Bold.ttf") }});
+                src: url({{ asset("build/fonts/OpenSans-Bold.ttf") }}) format('truetype'),
+                url({{ asset("build/fonts/OpenSans-Bold.ttf") }}) format('woff'),
+                url({{ asset("build/fonts/OpenSans-Bold.ttf") }}) format('embedded-opentype'),
+                url({{ asset("build/fonts/OpenSans-Bold.ttf") }}) format('svg');
+                font-weight: 600;
+                font-style: normal;
+            }
+        </style>
         {% block stylesheets %}<link rel="stylesheet" href="{{ asset("build/style.css") }}">
             <link rel="stylesheet"
                   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
