@@ -42,7 +42,7 @@ class Recipe
     private $steps;
     /**
      * @var Comment[]
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment",mappedBy="recipe")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment",mappedBy="recipe", cascade={"persist"})
      */
     private $comments;
 
