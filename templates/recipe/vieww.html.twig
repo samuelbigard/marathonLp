@@ -1,0 +1,124 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main class="single-recette">
+        <div class="single-recette__div1" style="background-image: url({{ asset(prefix~recipe.webPath) }});">
+            <div class ="container_image" >
+                <div class="titre_recette">
+                    <h1>{{ recipe.name }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="single-recette__div2">
+            <div class="container_recette">
+                <div class="barrelogo">
+                    <ul>
+                        <li><img src="{{ asset("img/single-recette/whisk.png") }}"/> <br/>Difficulte </br>
+                            <!-- for -->
+                            <div class='barrelogo__vote'>
+                                {% for i in 0..5 %}
+                                    {% if i< recipe.difficulty %}
+                                        <img class='full' src="{{ asset("build/img/single-recette/whisk.png") }}" />
+                                    {% else %}
+                                        <img src="{{ asset("build/img/single-recette/whisk.png") }}"/>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <!-- for -->
+                        </li>
+                        <li><img src="{{ asset("build/img/single-recette/alarm-clock.png") }}"/> </br> Temps de préparation </br> <div>{{ recipe.preparationTime|date("H:i") }}</div></li>
+                        <li><img src="{{ asset("build/img/single-recette/pot.png") }}"/> </br>Temps de cuisson </br><div> {{ recipe.cookingTime|date("H:i") }}</div></li>
+                    </ul>
+                </div>
+                <div class="recette_content">
+                    <div class="description">
+                        <p>{{ recipe.description }}</p>
+                    </div>
+                    <div class="liste_ingredients">
+
+                        <div>
+                            <h3>Ingrédients :</h3>
+                            {{ recipe.ingredientsMd|raw }}
+                        </div>
+
+
+                        <div>
+                            <h3>Matériel :</h3>
+                            {{ recipe.materialsMd|raw }}
+                        </div>
+
+
+                        <div>
+                            <h3>Liste des étapes :</h3>
+                           {{ recipe.stepsMd|raw }}
+                            <div>
+
+
+                            </div>
+
+                            <div class="astuce">
+                                <div class="titre_astuce">
+                                    <img src="{{ asset("build/img/single-recette/cooker.png") }}"/>
+                                    <h3>L'astuce du Chef</h3>
+                                </div>
+                                <p>{{ recipe.astuce }}</p>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div class="containerComment">
+                            <div class="topBlue">
+                                <div id="headerMsg">
+                                    <img src="{{ asset("build/img/single-recette/chat.svg") }}" alt="chat">
+                                    Commentaires
+
+                                    <div class="cross"></div>
+
+                                </div>
+                            </div>
+
+                            <div class="containerMsg">
+                                <p class="message">
+                                    <span>Jean Mouloude</span> </br>
+                                    Bonjour !
+                                </p>
+                                {% if recipe.comments is not empty %}
+                                    <h2>Commentaires</h2>
+                                {% endif %}
+
+                                    {% for comment in recipe.comments %}
+                                        <p class="message">
+                                            <span>{{ comment.user.name }} le {{ comment.updatedAt|date("d/m/Y")}}</span> </br>
+                                            {{ comment.content }}
+                                        </p>
+                                        {% if is_granted('ROLE_ADMIN') or comment.user==app.user %}
+                                            <a href="{{ path("comment_edit", {id: comment.id}) }}">Editer</a>
+                                            <a href="{{ path("comment_delete", {id: comment.id}) }}">Supprimer</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% if is_granted('ROLE_USER') %}
+                                    <div class="form-sf">
+                                        {{ form_start(form) }}
+                                        {{ form_widget(form) }}
+                                        {{ form_end(form) }}
+
+                                    </div>
+                                {% else %}
+                                    <span><a href="{{ path("login") }}"> Connectez-vous</a> pour pouvoir commenter</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

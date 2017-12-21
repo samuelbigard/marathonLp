@@ -27,8 +27,8 @@
                         <p class="letterBack">0{{ (2 * (multiplicateur-1) + cpt) }}</p>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <button onclick="window.location.href="{{ path('admin_delete_article', {id:article.id}) }}"">Supprimer</button>
-                        <button onclick="window.location.href="{{ path('admin_edit_article', {id:article.id}) }}"">Editer</button>
+                        <button class="supprimer" onclick="window.location.href="{{ path('admin_delete_article', {id:article.id}) }}"">Supprimer</button>
+                        <button class="editer" onclick="window.location.href='{{ path('admin_edit_article', {id:article.id}) }}'">Editer</button>
                     {% endif %}
                 </a>
             {% else %}
@@ -42,8 +42,8 @@
                         <p class="letterBack">0{{ (2 * (multiplicateur-1) + cpt) }}</p>
                     </div>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <button onclick="window.location.href="{{ path('admin_delete_article', {id:article.id}) }}"">Supprimer</button>
-                        <button onclick="window.location.href="{{ path('admin_edit_article', {id:article.id}) }}">editer</button>
+                        <button class="supprimer" onclick="window.location.href="{{ path('admin_delete_article', {id:article.id}) }}"">Supprimer</button>
+                        <button class="editer" onclick="window.location.href="{{ path('admin_edit_article', {id:article.id}) }}">Editer</button>
                     {% endif %}
                 </a>
             {% endif %}

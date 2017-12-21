@@ -58,9 +58,9 @@ class RecipeController extends Controller
             $event->setComment($comment);
             $dispatcher = $this->get("event_dispatcher");
             $dispatcher->dispatch(AppEvent::COMMENT_ADD, $event);
-            return $this->render("recipe/view.html.twig", ["recipe" => $recipe, "id" => $recipe->getId(),
+            return $this->render("recipe/vieww.html.twig", ["recipe" => $recipe, "id" => $recipe->getId(),
                 "form" => $form->createView()]);
         }
-        return $this->render("recipe/view.html.twig", ["recipe" => $recipe, "form" => $form->createView()]);
+        return $this->render("recipe/vieww.html.twig", ["recipe" => $recipe, "form" => $form->createView()]);
     }
 }
