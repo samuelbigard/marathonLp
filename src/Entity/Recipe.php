@@ -48,7 +48,7 @@ class Recipe
 
     /**
      * @var Vote[]
-     * @ORM\OneToMany(targetEntity="App\Entity\Vote",mappedBy="recipe")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vote",mappedBy="recipe", cascade={"persist"})
      */
     private $votes;
 
