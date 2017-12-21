@@ -87,9 +87,6 @@
                                     <span>Jean Mouloude</span> </br>
                                     Bonjour !
                                 </p>
-                                {% if recipe.comments is not empty %}
-                                    <h2>Commentaires</h2>
-                                {% endif %}
 
                                     {% for comment in recipe.comments %}
                                         <p class="message">
