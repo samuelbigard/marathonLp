@@ -4,25 +4,17 @@ namespace App\Repository;
 
 use App\Entity\Recipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class RecipeRepository extends ServiceEntityRepository
+class RecipeRepository extends EntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function findFiveFastest()
     {
-        parent::__construct($registry, Recipe::class);
-    }
-
-    /*
-    public function findBySomething($value)
-    {
-        return $this->createQueryBuilder('r')
-            ->where('r.something = :value')->setParameter('value', $value)
-            ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('recipe')->orderBy("recipe.preparation_time+recipe.cooking_time" , "asc")
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
+
 }

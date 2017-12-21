@@ -34,6 +34,15 @@ class RecipeController extends Controller
     }
 
     /**
+     * @Route(path="/express", name="recipe_express")
+     */
+    public function expressRecipe(){
+        $em = $this->getDoctrine()->getManager();
+        $recipes = $em->getRepository(Recipe::class)->findFiveFastest();
+        return $this->render("recipe/all.html.twig", ["recipes" => $recipes]);
+    }
+
+    /**
      * @Route(path="/{id}", name="recipe_view")
      */
     public function viewRecipe(Request $request, Recipe $recipe){
