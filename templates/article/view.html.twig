@@ -15,6 +15,11 @@
                 <div class="recette_content">
                     <div class="description">
                         <p>{{ article.content }}</p>
+                         {% if article.hitcount > 1 %}
+                             <p>Nombre de visites : {{ article.hitcount }}</p>
+                         {% else %}
+                             <p>Nombre de visite : {{ article.hitcount }}</p>
+                         {% endif %}
                     </div>
 
                     </div>
