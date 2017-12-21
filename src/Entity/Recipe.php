@@ -42,13 +42,13 @@ class Recipe
     private $steps;
     /**
      * @var Comment[]
-     * @ORM\OneToMany(targetEntity="App\Entity\Comment",mappedBy="recipe", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment",mappedBy="recipe", cascade={"remove"})
      */
     private $comments;
 
     /**
      * @var Vote[]
-     * @ORM\OneToMany(targetEntity="App\Entity\Vote",mappedBy="recipe", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Vote",mappedBy="recipe", cascade={"remove"})
      */
     private $votes;
 
