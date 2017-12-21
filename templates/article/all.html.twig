@@ -1,17 +1,58 @@
 {% extends "base.html.twig" %}
 
+
+
 {% block body %}
+    {% if app.request.get('page') < 1 %}
+        {% set multiplicateur = 1 %}
+    {% elseif app.request.get('page') >= 1 %}
+        {% set multiplicateur = app.request.get('page') %}
+    {% endif %}
+    <main class="liste">
+    <div class="liste__div1">
+    <div class="centerContent">
+
     <ul>
+
+        {% set cpt = 1 %}
         {% for article in articles %}
-            <li>
-                <a href="{{ path("article_view", {id:article.id}) }}">{{ article.title }}</a>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class= "btn btn-info" href="{{ path('admin_edit_article', {id:article.id}) }}">Editer</a>
-                    <a class= "btn btn-alert" href="{{ path('admin_delete_article', {id:article.id}) }}">Supprimer</a>
-                {% endif %}
-            </li>
+            {% if cpt%2 == 1 %}
+                <a href="{{ path("article_view",{id: article.id}) }}" class="card left" style="background-image: url({{ asset(prefix~article.webPath) }})">
+                    <div class="centerCardContent">
+                        <p class="NumberRecette">0{{ (2 * (multiplicateur-1) + cpt) }}</p>
+                        <h2>{{ article.title }}</h2>
+                        <p class="texteStyle">
+                            {{ article.summary }}
+                        </p>
+                        <p class="letterBack">0{{ (2 * (multiplicateur-1) + cpt) }}</p>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <button onclick="window.location.href="{{ path('admin_delete_article', {id:article.id}) }}"">Supprimer</button>
+                        <button onclick="window.location.href="{{ path('admin_edit_article', {id:article.id}) }}"">Editer</button>
+                    {% endif %}
+                </a>
+            {% else %}
+                <a href="{{ path("article_view",{id: article.id}) }}" class="card right" style="background-image: url({{ asset(prefix~article.webPath) }})">
+                    <div class="centerCardContent">
+                        <p class="NumberRecette">0{{ (2 * (multiplicateur-1) + cpt) }}</p>
+                        <h2>{{ article.title }}</h2>
+                        <p class="texteStyle">
+                            {{ article.summary }}
+                        </p>
+                        <p class="letterBack">0{{ (2 * (multiplicateur-1) + cpt) }}</p>
+                    </div>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <button onclick="window.location.href="{{ path('admin_delete_article', {id:article.id}) }}"">Supprimer</button>
+                        <button onclick="window.location.href="{{ path('admin_edit_article', {id:article.id}) }}">editer</button>
+                    {% endif %}
+                </a>
+            {% endif %}
+            {% set cpt = cpt + 1 %}
         {% endfor %}
     </ul>
+    </div>
+    </div>
+    </main>
 
     <div class="navigation">
         {{ knp_pagination_render(articles) }}
