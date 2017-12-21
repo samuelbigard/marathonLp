@@ -38,8 +38,8 @@
                     <li>
                         <a href="{{ path("recipe_view", {id:recipe.id}) }}">{{ recipe.name }}</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('admin_edit_recipe', {id:recipe.id}) }}">Editer</a>
-                        <a href="{{ path('admin_delete_recipe', {id:recipe.id}) }}">Supprimer</a>
+                        <span><a href="{{ path('admin_edit_recipe', {id:recipe.id}) }}">Editer</a>
+                        <a href="{{ path('admin_delete_recipe', {id:recipe.id}) }}">Supprimer</a></span>
                     {% endif %}
                     </li>
                 {% endfor %}

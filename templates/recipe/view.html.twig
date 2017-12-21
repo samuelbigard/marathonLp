@@ -1,8 +1,20 @@
 {% extends "base.html.twig" %}
-
 {% block body %}
     <h1>{{ recipe.name }}</h1>
     {% if recipe.media is not null  %}
         <p><img src="{{ asset(prefix~recipe.webPath) }}"/></p>
     {% endif %}
+    <p>steps : {{ recipe.stepsMd|raw }}</p>
+    <p>ingredients : {{ recipe.ingredientsMd|raw }}</p>
+    <p>materiels : {{ recipe.materialsMd|raw }}</p>
+    <p>astuce : {{ recipe.astuceMd|raw }}</p>
+    <p>temps de cuisson : {{ recipe.cookingTime|date("H:i") }} heure(s)</p>
+    {% if recipe.comments is not empty %}
+        <h2>Commentaires</h2>
+    {% endif %}
+    <ul>
+        {% for comment in recipe.comments %}
+            <li>{{ comment.user.name }} le {{ comment.updatedAt|date("d/m/Y")}}<br> {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
