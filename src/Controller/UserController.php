@@ -34,6 +34,6 @@ class UserController extends Controller
                 }
             }
         }
-        return $this->render("recipe/all.html.twig", ["recipes" => $recipes_user]);
+        return $this->render("user/view.html.twig", ["recipes" => $recipes_user, "user"=>$this->getUser()]);
     }
 }

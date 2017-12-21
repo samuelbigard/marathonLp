@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <main class="mon-compte">
+        <h1>{{ user.name }}</h1>
+        <p class="mail"><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+
+        <div class="mon-compte__recettes">
+            <h2>J'ai voté : </h2>
+            {% for recipe in recipes %}
+                <a href='{{ path("recipe_view", {id: recipe.id}) }}' class="card">
+                    <div class="img" style="background-image:url({{ asset(prefix~recipe.webPath) }})"></div>
+                    <h3>{{ recipe.name }}</h3>
+                    <p>{{ recipe.description }}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
