@@ -18,5 +18,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="yummy-symfony node_modules" level="project" />
   </component>
 </module>
